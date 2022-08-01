@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./page/Home";
+import { useDispatch } from "react-redux";
+import { fetchAllEmployees } from "./redux/thunk";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllEmployees());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Home />
     </div>
   );
 }
